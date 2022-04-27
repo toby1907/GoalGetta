@@ -64,18 +64,20 @@ class CoursesAdapter(): ListAdapter<Goal, CoursesAdapter.CourseViewHolder>(DiffC
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourseViewHolder {
         val inflater = LayoutInflater.from (parent.context)
         val binding = TaskListItemBinding.inflate(inflater, parent,false)
-        return CourseViewHolder(binding)
+        return CourseViewHolder(binding){
+            // implement the onItemChecked
+        }
     }
 
     override fun onBindViewHolder(holder: CourseViewHolder, position: Int) {
         val goalItem = getItem(position)
         holder.bind(goalItem)
-        holder.itemView.setOnClickListener {
+       /* holder.itemView.setOnClickListener {
             val detailIntent = Intent(holder.itemView.context, DetailTaskActivity::class.java)
             detailIntent.putExtra(GOAL_ID, goalItem.goalId)
            holder.itemView.context.startActivity(detailIntent)
 
-        }
+        }*/
     }
     /*private var onItemClickListener: ((Goal) -> Unit)? = null
     fun setOnItemClickListener (listener: (Goal)-> Unit) {
